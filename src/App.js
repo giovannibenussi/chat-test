@@ -40,7 +40,7 @@ const LINKS = gql`
   query {
     messages {
       id
-      message
+      text
     }
   }
 `
@@ -49,7 +49,7 @@ const SUBSCRIPTION = gql`
   subscription {
     newChatMessage {
       id
-      message
+      text
     }
   }
 `
@@ -94,7 +94,7 @@ class App extends Component {
             if (error) return <div>Error</div>
 
             const listItems = data.messages.map((message) =>
-              <li key={message.id}>{message.id}: {message.message}</li>
+              <li key={message.id}>{message.id}: {message.text}</li>
             );
 
             this._subscribeToNewLinks(subscribeToMore)
